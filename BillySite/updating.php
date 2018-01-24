@@ -25,6 +25,7 @@
         <?php include 'includes/header.html'?>
             <div class="row" style="background-color: #80B8EA;">
                 <h1 style=" font-size: 70px; color:white;"><img src="img/Billy%20Happy%20small.png">Updating<img src="img/Billy%20Happy%20small.png" style="transform:scaleX(-1)"></h1>
+                <p>Can you read this?</p>
             </div>
             <?php include 'includes/footer.html'?>
     </body>

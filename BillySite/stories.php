@@ -1,28 +1,10 @@
 <!DOCTYPE html>
-
 <html>
-    <head>
-        <!--Include Jquery-->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-        <!-- Optional theme -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-        <!-- Latest compiled and minified JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-        
-        <!-- Favicon -->
-        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-         <style>
-            @import url('https://fonts.googleapis.com/css?family=Open+Sans');
-            @import url('https://fonts.googleapis.com/css?family=Oswald');
-        </style>
-
-    </head>
     <style>
+        @import url('https://fonts.googleapis.com/css?family=Open+Sans');
+        @import url('https://fonts.googleapis.com/css?family=Oswald');
+
     .carousel-indicators li {
     display: inline-block;
     width: 48px;
@@ -42,6 +24,73 @@
     background-color: #ffff99;
 }
     </style>
+    <?php
+        function stories(){
+            $check=1;
+            $count = count(scandir('Stories/')) - 4;
+            for($i = 0; $count > $i; $count--){
+            $file = "News/".$i.".txt";
+            if(file_exists($file)) {
+                if(is_readable($file)) {
+                    $f = fopen($file, "rb") or die("Unable to open file");
+                }
+            }
+            $a = $count.'';
+            $len = strlen($i);
+            $j = $a[$len-1];
+            $color = "white";
+            if($j==1||$j==6){
+                $color = "#80B8EA";
+            }elseif($j==2||$j==7){
+                $color = "#ffb347";
+            }elseif($j==3||$j==8){
+                $color = "#48D1CC";
+            }elseif($j==4||$j==9){
+                $color = "#d3d3d3";
+            }else{
+                $color = "#FF8691";
+            }
+
+            $newsDiv = "<div class=\"row\"style=\"color:white; margin-left:0; background-color:".$color."; margin-top:5px; font-size: 2em; width:100%;\"><div class=\"col-md-6 col-md-offset-3\">";
+            while ($line = fgets($f)) {
+                if(strpos ($line, 'Title:' )!==false) {
+
+                    if($check ==1){
+                        $templine = get_string_between($line, 'Title:', ' :Title');
+                        $templine = "<h1>" . $templine . "<span class=\"badge\" style=\"font-size: 40px; margin-left: 2%; padding: 0.5%;\">New</span></h1><br>";
+                        $check++;
+                    }else {
+                        $templine = get_string_between($line, 'Title:', ' :Title');
+                        $templine = "<h1>" . $templine . "</h1><br>";
+                    }
+                    $newsDiv = $newsDiv . $templine;
+                }elseif(strpos ($line, 'DATE:')!==false){
+                    $templine = get_string_between($line, 'DATE:', ' :DATE');
+                    $templine = "<p>" . $templine . "</p><br>";
+                    $newsDiv = $newsDiv . $templine;
+                }elseif(strpos ($line, 'Paragraph:')!==false) {
+                    $templine = get_string_between($line,'Paragraph:',':Paragraph');
+                    $templine = "<p>".$templine."</p><br>";
+                    $newsDiv = $newsDiv.$templine;
+                }elseif(strpos ($line, 'Subheading:')!==false){
+                    $templine = get_string_between($line,'Subheading:',':Subheading');
+                    $templine = "<h2>".$templine."</h2>";
+                    $newsDiv = $newsDiv.$templine;
+                }elseif (strpos ($line, 'Image:')!==false){
+                    $templine = get_string_between($line,'Image:',':Image');
+                    $templine = "<img src=\"NewsIMG\\".$templine."\"  style=\"width:300px;\"><br>";
+                    $newsDiv = $newsDiv.$templine;
+                }elseif(strpos ($line, 'THEEND')!==false){
+                    $templine = "</div><div class=\"col-md-3\"></div></div>";
+                    $newsDiv = $newsDiv.$templine;
+                    echo $newsDiv;
+                    break;
+                    fclose($file);
+                }
+            }
+            }
+            }
+    ?>
     <body>
         <?php include 'includes/header.html'?>
         <div class="row" style="background-color:#80B8EA; color:white;">
@@ -50,7 +99,7 @@
             </center>
         </div>
         <div class="row" style="background-color: #FF8691; color:white; padding-left: 5%; height:100%;">
-            <h1 style=" font-size: 70px; font-family: Oswald; object-position: center;"><center>Billy Is Left Exposed<span class="badge" style="font-size: 40px; margin-left: 2%; padding: 0.5%;">New</span></center></h1>
+            <h1 style=" font-size: 70px; font-family: Oswald; object-position: center;">Billy Is Left Exposed<span class="badge" style="font-size: 40px; margin-left: 2%; padding: 0.5%;">New</span></></h1>
             <div class="col-md-6" style="background-color: #FF8691; height:auto; float:left; ">
                 
                 <div id="theCarousel" class="carousel slide" data-ride="carousel" style="border-right: 2px solid white; ">

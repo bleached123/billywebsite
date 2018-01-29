@@ -1,20 +1,5 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <!--Include Jquery-->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-        <!-- Optional theme -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-        <!-- Latest compiled and minified JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-        
-        <!-- Favicon -->
-        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
      <style>
             @import url('https://fonts.googleapis.com/css?family=Open+Sans');
             @import url('https://fonts.googleapis.com/css?family=Oswald');
@@ -46,21 +31,16 @@
             background-color: white;
         }
         </style>
-
-
-    </head>
-    
         <body style="background-color: white text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; ">
         <?php include 'includes/header.html'?>
-            <div class="row" style="background-color: #80B8EA; width:101%; color:white; padding-left: 5%; height:100%;">
-            <div class="container">
-                <center><h1 style ="font-size: 70px;"><img src="img/Billy%20Happy%20small.png">Who is Billy?<img src="img/Billy%20Happy%20small.png" style="transform: scaleX(-1);"></h1> 
-                <p style="font-size: 30px;">Billy is here to make mistakes with his cyber security so you don't have to... </p></center>
+            <div class="row" style="background-color: #80B8EA;  color:white; padding-left: 5%; height:100%;">
+                <div class="container">
+                    <h1 style ="font-size: 70px;"><img src="img/Billy%20Happy%20small.png">Who is Billy?<img src="img/Billy%20Happy%20small.png" style="transform: scaleX(-1);"></h1>
+                    <p style="font-size: 30px;">Billy is here to make mistakes with his cyber security so you don't have to... </p></>
+                </div>
             </div>
-            </div>
-
         <div class="row" style="background-color: #FF8691; color:white; padding-left: 5%; height:100%;">
-        <h1 style=" font-size: 70px; font-family: Oswald; object-position: center;"><center>Billy Is Left Exposed<span class="badge" style="font-size: 40px; margin-left: 2%; padding: 0.5%;">New</span></center></h1>
+        <h1 style=" font-size: 70px; font-family: Oswald; object-position: center;"><>Billy Is Left Exposed<span class="badge" style="font-size: 40px; margin-left: 2%; padding: 0.5%;">New</span></h1>
         <div class="col-md-6" style="background-color: #FF8691; height:auto; float:left; ">
 
             <div id="theCarousel" class="carousel slide" data-ride="carousel" style="border-right: 2px solid white; ">

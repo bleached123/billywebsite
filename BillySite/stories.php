@@ -25,78 +25,135 @@
 }
     </style>
     <?php
+        function get_string_between($content, $start, $end){
+            $r = explode($start, $content);
+            if (isset($r[1])){
+                $r = explode($end, $r[1]);
+                return $r[0];
+            }
+            return '';
+        }
+
         function stories(){
-            $check=1;
+
             $count = count(scandir('Stories/')) - 4;
+            $check=1;
             for($i = 0; $count > $i; $count--){
-            $file = "News/".$i.".txt";
+            $file = "Stories/".$i.".txt";
             if(file_exists($file)) {
                 if(is_readable($file)) {
                     $f = fopen($file, "rb") or die("Unable to open file");
                 }
             }
-            $a = $count.'';
-            $len = strlen($i);
-            $j = $a[$len-1];
-            $color = "white";
-            if($j==1||$j==6){
-                $color = "#80B8EA";
-            }elseif($j==2||$j==7){
-                $color = "#ffb347";
-            }elseif($j==3||$j==8){
-                $color = "#48D1CC";
-            }elseif($j==4||$j==9){
-                $color = "#d3d3d3";
-            }else{
-                $color = "#FF8691";
-            }
 
-            $newsDiv = "<div class=\"row\"style=\"color:white; margin-left:0; background-color:".$color."; margin-top:5px; font-size: 2em; width:100%;\"><div class=\"col-md-6 col-md-offset-3\">";
+            $dos = "<div class =\"col-md-6\"style=\"background-color: #FF8691; height:auto; border-color: white; float:right; padding-right: 5%;\"><h2 style=\"font-size: 40px;\">Do</h2><ul type=\"circle\" style=\"font-size: 20px;\">";
+            $storyDiv = "<div class=\"row\"style=\"color:white; margin-left:0; background-color:";
+            $donts = "<h2 style=\"font-size: 40px;\">Don't</h2><ul type=\"circle\" style=\"font-size: 20px;\">";
+
             while ($line = fgets($f)) {
-                if(strpos ($line, 'Title:' )!==false) {
 
-                    if($check ==1){
-                        $templine = get_string_between($line, 'Title:', ' :Title');
-                        $templine = "<h1>" . $templine . "<span class=\"badge\" style=\"font-size: 40px; margin-left: 2%; padding: 0.5%;\">New</span></h1><br>";
+                if(strpos ($line, 'TITLE:' )!==false) {
+                    if ($check == 1) {
                         $check++;
-                    }else {
-                        $templine = get_string_between($line, 'Title:', ' :Title');
-                        $templine = "<h1>" . $templine . "</h1><br>";
+                        $templine = get_string_between($line, 'TITLE:', ':TITLE');
+                        $templine =$templine;
+                        $templine = $templine."<span class=\"badge\" style=\"font-size: 40px; margin-left: 2%; padding: 0.5%;\">New</span></h1><div class=\"col-md-6\" style=\" height:auto; float:left; \">";
+                        $storyDiv = $storyDiv.$templine;
+
+                    }else{
+                        $templine = get_string_between($line, 'TITLE:', ':TITLE');
+                        $templine =$templine."</h1>";
+                        $templine = $templine."<div class=\"col-md-6\" style=\" height:auto; float:left; \">";
+                        $storyDiv = $storyDiv.$templine;
                     }
-                    $newsDiv = $newsDiv . $templine;
-                }elseif(strpos ($line, 'DATE:')!==false){
-                    $templine = get_string_between($line, 'DATE:', ' :DATE');
-                    $templine = "<p>" . $templine . "</p><br>";
-                    $newsDiv = $newsDiv . $templine;
-                }elseif(strpos ($line, 'Paragraph:')!==false) {
-                    $templine = get_string_between($line,'Paragraph:',':Paragraph');
-                    $templine = "<p>".$templine."</p><br>";
-                    $newsDiv = $newsDiv.$templine;
-                }elseif(strpos ($line, 'Subheading:')!==false){
-                    $templine = get_string_between($line,'Subheading:',':Subheading');
-                    $templine = "<h2>".$templine."</h2>";
-                    $newsDiv = $newsDiv.$templine;
-                }elseif (strpos ($line, 'Image:')!==false){
-                    $templine = get_string_between($line,'Image:',':Image');
-                    $templine = "<img src=\"NewsIMG\\".$templine."\"  style=\"width:300px;\"><br>";
-                    $newsDiv = $newsDiv.$templine;
+                }elseif(strpos ($line, 'BACKGROUNDCOLOR:' )!==false){
+                    $color = get_string_between($line, 'BACKGROUNDCOLOR:', ':BACKGROUNDCOLOR');
+                    $storyDiv = $storyDiv.$color."; color:";
+                }elseif(strpos ($line, 'FONTCOLOR:' )!==false){
+                    $color = get_string_between($line, 'FONTCOLOR:', ':FONTCOLOR');
+                    $storyDiv = $storyDiv.$color."color:white; padding-left: 5%; height:100%;\">
+            <h1 style=\" font-size: 70px; font-family: Oswald; text-align:center; object-position: center;\">";
+                }elseif(strpos ($line, 'STORY')!==false) {
+                    if($count%2==0){
+                        if(strpos($line, 'STORY1:')!==false){
+                            $templine= "<div id=\"theCarousel\" class=\"carousel slide\" data-ride=\"carousel\" style=\"border-right: 2px solid white; \"><ol class=\"carousel-indicators\">
+                            <li data-target=\"#theCarousel\" data-slide-to=\"0\" class=\"active\"></li>
+                            <li data-target=\"#theCarousel\" data-slide-to=\"1\"></li>
+                            <li data-target=\"#theCarousel\" data-slide-to=\"2\"></li>
+                        </ol>
+                        <div class=\"carousel-inner\" style=\"width:100%; height:100%;\">
+                            <div class=\"item active\">                            
+                                    <img src=\"img/Billy%20Happy.png\" alt=\"Billy Happy\" style=\"width:50%; transform: scaleX(-1); float:left\">
+                                        <h2 style=\"color:white; float:right; width:50%; font-family: Open+Sans;\">";
+                            $templine = $templine.get_string_between($line, 'STORY1:', ':STORY1');
+                            $templine = $templine."</h2></div><div class=\"item\"><img src=\"img/Billy%20Neutral.png\" alt=\"MediumBilly\" style=\"width:50%; transform: scaleX(-1); float:left;\"><h2 style=\"color:white; float:right; width:50%; \">";
+                            $storyDiv = $storyDiv.$templine;
+                        }elseif (strpos($line, 'STORY2:')!==false){
+                            $templine = get_string_between($line, 'STORY2:', ':STORY2');
+                            $templine = $templine."</h2></div><div class=\"item\"><img src=\"img/Billy%20Unhappy.png\" alt=\"SadBilly\" style=\"width:50%; transform: scaleX(-1); float:left;\"><h2 style=\"color:white; float:right; width:47%; \">";
+                            $storyDiv = $storyDiv.$templine;
+                        }elseif (strpos($line, 'STORY3:')!==false){
+                            $templine = get_string_between($line, 'STORY3:', ':STORY3');
+
+                            $templine = $templine."</h2></div></div></div></div>";
+                            $storyDiv = $storyDiv.$templine;
+                        }
+                    }else{
+                        if(strpos($line, 'STORY1:')!==false){
+                            $templine= "<div id=\"theCarousel\" class=\"carousel slide\" data-ride=\"carousel\" style=\"border-right: 2px solid white; \"><ol class=\"carousel-indicators\">
+                            <li data-target=\"#theCarousel\" data-slide-to=\"0\" class=\"active\"></li>
+                            <li data-target=\"#theCarousel\" data-slide-to=\"1\"></li>
+                            <li data-target=\"#theCarousel\" data-slide-to=\"2\"></li>
+                        </ol>
+                        <div class=\"carousel-inner\" style=\"width:100%; height:100%;\">
+                            <div class=\"item active\">                            
+                                    <img src=\"img/Billy%20Happy.png\" alt=\"Billy Happy\" style=\"width:50%; float:left\">
+                                        <h2 style=\"color:white; float:right; width:50%; font-family: Open+Sans; \">";
+                            $templine = $templine.get_string_between($line, 'STORY1:', ':STORY1');
+                            $templine = $templine."</h2></div><div class=\"item\"><img src=\"img/Billy%20Neutral.png\" alt=\"MediumBilly\" style=\"width:50%; float:left;\"><h2 style=\"color:white; float:right; width:50%; \">";
+                            $storyDiv = $storyDiv.$templine;
+                        }elseif (strpos($line, 'STORY2:')!==false){
+                            $templine = get_string_between($line, 'STORY2:', ':STORY2');
+                            $templine = $templine."</h2></div><div class=\"item\"><img src=\"img/Billy%20Unhappy.png\" alt=\"SadBilly\" style=\"width:50%; float:left;\"><h2 style=\"color:white; float:right; width:47%; \">";
+                            $storyDiv = $storyDiv.$templine;
+                        }elseif (strpos($line, 'STORY3:')!==false){
+                            $templine = get_string_between($line, 'STORY3:', ':STORY3');
+                            $templine = $templine."</h2></div></div></div></div>";
+                            $storyDiv = $storyDiv.$templine;
+                        }
+                    }
+                }elseif(strpos ($line, 'DO:')!==false){
+                    $templine = get_string_between($line,'DO:',':DO');
+                    $dos = $dos."<li>".$templine."</li>";
+                }elseif (strpos ($line, 'DONT:')!==false) {
+                    $templine = get_string_between($line, 'DONT:', ':DONT');
+                    $donts =  $donts."<li>".$templine."</li>";
+                }elseif(strpos ($line, 'DOPARA:')!==false){
+                    $templine = get_string_between($line,'DOPARA:',':DOPARA');
+                    $dos = $dos."<p>".$templine."</p>";
+                }elseif (strpos ($line, 'DONTPARA:')!==false){
+                    $templine = get_string_between($line,'DONTPARA:',':DONTPARA');
+                    $donts = $donts.$templine;
+                }elseif(strpos ($line, 'POSTER:')!==false){
+                    $templine = get_string_between($line,'POSTER:',':POSTER');
+                    $dos = $dos."<li><a style=\"text-decoration: none;\" href=\"".$templine."\">Download the poster</a></li></ul>";
+                }elseif (strpos ($line, 'LEARNMORE:')!==false){
+                    $templine = get_string_between($line,'LEARNMORE:',':LEARNMORE');
+                    $donts = $donts.$templine."<li><a href=".$templine.">Learn More...</a></li></ul><img src=\"img/Artemis%20Point%20Left.png\" style=\"float:right; padding-right:2%; width:40%;\"></div></div>";
                 }elseif(strpos ($line, 'THEEND')!==false){
-                    $templine = "</div><div class=\"col-md-3\"></div></div>";
-                    $newsDiv = $newsDiv.$templine;
-                    echo $newsDiv;
+                    $thediv = $storyDiv.$dos.$donts;
+                    echo $thediv;
                     break;
                     fclose($file);
                 }
             }
-            }
-            }
+        }
+    }
     ?>
     <body>
         <?php include 'includes/header.html'?>
         <div class="row" style="background-color:#80B8EA; color:white;">
-            <center>
-                    <div class="col" ><h1 style="font-size: 70px;"><img src="img/Billy%20Happy%20small.png">The Story so far...<img src="img/Billy%20Happy%20small.png" style="transform: scaleX(-1);"></h1></div>
-            </center>
+            <div class="col" ><h1 style="font-size: 70px;"><img src="img/Billy%20Happy%20small.png">The Story so far...<img src="img/Billy%20Happy%20small.png" style="transform: scaleX(-1);"></h1></div>
         </div>
         <div class="row" style="background-color: #FF8691; color:white; padding-left: 5%; height:100%;">
             <h1 style=" font-size: 70px; font-family: Oswald; object-position: center;">Billy Is Left Exposed<span class="badge" style="font-size: 40px; margin-left: 2%; padding: 0.5%;">New</span></></h1>
@@ -125,14 +182,13 @@
                         </div>
                     </div>
                 </div>
-                
             </div>
                 <div class ="col-md-6"style="background-color: #FF8691; height:auto; border-color: white; float:right; padding-right: 5%;">
                 <h2 style="font-size: 40px;">Do</h2>
                 <ul type="circle" style="font-size: 20px;">
                     <li>Enable Automatic Updates</li>
                     <p>Operating systems and applications often have automatic update functionality. It's a good idea to enable it so you're always up to date.</p>
-                    <li><a style="text-decoration: none;" href="backup.html">Learn More...</a></li>
+                    <li><a style="text-decoration: none;" href="backup.php">Learn More...</a></li>
                 </ul>
                 <h2 style="font-size: 40px;">Don't</h2>
                 <ul type="circle" style="font-size: 20px;">
@@ -194,8 +250,9 @@
                     </ul>
                 <img src="img/Artemis%20Point%20Left.png" style="float:right; padding-right:2%; width:40%;">
                 </div>
-                
         </div>
-        <?php include 'includes/footer.html'?>
+        <?php echo stories(); ?>
+
+       <?php include 'includes/footer.html'?>
     </body>
 </html>

@@ -40,7 +40,7 @@
                 </div>
             </div>
         <div class="row" style="background-color: #FF8691; color:white; padding-left: 5%; height:100%;">
-        <h1 style=" font-size: 70px; font-family: Oswald; object-position: center;"><>Billy Is Left Exposed<span class="badge" style="font-size: 40px; margin-left: 2%; padding: 0.5%;">New</span></h1>
+        <h1 style=" font-size: 70px; font-family: Oswald; object-position: center;">Billy Is Left Exposed<span class="badge" style="font-size: 40px; margin-left: 2%; padding: 0.5%;">New</span></h1>
         <div class="col-md-6" style="background-color: #FF8691; height:auto; float:left; ">
 
             <div id="theCarousel" class="carousel slide" data-ride="carousel" style="border-right: 2px solid white; ">

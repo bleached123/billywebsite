@@ -1,0 +1,20 @@
+BACKGROUNDCOLOR:#FF8691:BACKGROUNDCOLOR
+FONTCOLOR:white:FONTCOLOR
+
+TITLE:Billy Is Left Exposed:TITLE
+STORY1:Billie has a computer, this computer keeps trying to update, Billie always clicks 'remind me later'... :STORY1
+STORY2:Billie has a computer, this computer keeps trying to update, Billie always clicks "remind me later"...:STORY2
+STORY3:Billie has a computer, this computer keeps trying to update, Billie always clicks "remind me later"...:STORY3
+
+DO:Enable Automatic Updates:DO
+DOPARA:Operating systems and applications often have automatic update functionality. It's a good idea to enable it so you're always up to date.:DOPARA
+DONT:Put it off!:DONT
+DONTPARA:'Patches' often quite literally patch security holes in software, the longer you leave your system unpatched the more vulnerable it becomes.:DONTPARA
+DONT:Use Unsupported software:DONT
+DONTPARA:Companies often stop maintaining old software to put more focus on new products. If you're using out of date software it's likely to have many well known vulnerabilities:DONTPARA
+
+
+POSTER:Posters/Billy%20Leaves%20Themselves%20Exposed.pdf:POSTER
+LEARNMORE:backup.php:LEARNMORE
+
+THEEND

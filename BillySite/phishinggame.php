@@ -113,7 +113,7 @@
                         <img class="custom-image" src="Fake Emails/Netflix.png" data-answer="1" style="display: none;" id="10">
                         <div style="display:none; color:white;" id="20"><img src="img/Billy%20Happy.png"><h1>You are a phishing pro!</h1></div>
                         <div style="display:none; color:white;" id="30"><img src="img/Billy%20Neutral.png"><h1>You are good, but not great, keep practicing!</h1></div>
-                        <div style="display:none; color:white;" id="40"><img src="img/Billy%20Dead.png"><h1>GAME OVER, you got billy killed</h1></div>
+                        <div style="display:none; color:white;" id="40"><img src="img/Billy%20Dead.png"><h1>GAME OVER, you got billy hacked</h1></div>
                         
                     </div>
                     <div class="container" style="color:white;" id="livesG"><h1>Lives:</h1><h1 id="lives">3</h1>

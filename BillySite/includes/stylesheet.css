@@ -1,0 +1,388 @@
+:root {
+    --bondibluelight: #80b5e4;
+    --bondibluemed: #5391ca;
+    --bondibluedark: #1b5283;
+
+    --freshgreenlight: #d2e48b;
+    --freshgreenmed: #b4c960;
+    --freshgreendark: #6e831f;
+
+    --raspberryredlight: #e03879;
+    --raspberryredmed: #c1004a;
+    --raspberryreddark: #7d0031;
+
+    --deeporangelight: #f0bb65;
+    --deeporangemed: #e09e33;
+    --deeporangedark: #926011;
+
+    --deeproselight: #d335a4;
+    --deeprosemed: #a80075;
+    --deeprosedark: #6d004c;
+
+    --brilliantroselight: #e378b0;
+    --brilliantrosemed: #c74a8d;
+    --brilliantrosedark: #811850;
+
+    --butteryellowlight: #f9e04d;
+    --butteryellowmed: #f3d213;
+    --butteryellowdark: #9e8806;
+
+    --darklavenderlight: #aaa6d2;
+    --darklavendermed: #7b77a5;
+    --darklavender: #2d276b;
+
+    --turquoiselight: #a3d7eb;
+    --turquoisemed: #7fbfd7;
+    --turquoisedark: #29718c;
+
+    --seagreenlight: #c0e4e1;
+    --seagreenmed: #9fcac5;
+    --seagreendark: #34837b;
+
+    --persianindigolight: #516abf;
+    --persianindigomed: #1d347e;
+    --persianindigodark: #091a52;
+
+    --midnightbluelight: #787bb7;
+    --midnightbluemed: #3c3e6f;
+    --midnightbluedark: #131648;
+
+    --monolight: #b6b7b9;
+    --monomed: #747376;
+    --monodark: #222222;
+}
+
+
+
+/*Title styling standard pages */
+#titlecont{
+    background-color: var(--bondibluelight);
+    color:white;
+    text-align:center;
+}
+p{
+    font-size: 1vw;
+}
+h1{
+    font-size: 5vw;
+
+ }
+h2{
+    font-size: 4vw;
+}
+h3{
+    font-size: 3vw;
+}
+h4{
+    font-size: 2vw;
+}
+a{
+    text-decoration: none;
+    color:white;
+}
+#contimage{
+    text-align: center;
+    width:40%;
+}
+
+/*Rogue Networks Styling */
+#containerrogue{
+     background-color: var(--turquoiselight);
+     color:white;
+     text-align:center;
+ }
+#rogue1{
+    background-color: var(--turquoisemed);
+    color:white;
+    height:auto;
+    padding: 2% 5% 2% 5%;
+}
+#rogue2{
+    background-color: var(--turquoiselight);
+    color:white;
+    height:auto;
+    padding: 2% 5% 2% 5%;
+}
+
+/*Malware Styling*/
+#containermal{
+    background-color: var(--raspberryredlight);
+    color:white;
+    text-align:center;
+}
+#mal1{
+    background-color: var(--raspberryredmed);
+    color:white;
+    height:auto;
+    padding: 2% 5% 2% 5%;
+}
+#mal2{
+    background-color: var(--raspberryredlight);
+    color:white;
+    height:auto;
+    padding: 2% 5% 2% 5%;
+}
+
+/*Phishing styling */
+#containerfish{
+    background-color: var(--bondibluelight);
+    color:white;
+    text-align:center;
+}
+#fish1{
+    background-color: var(--bondibluemed);
+    color:white;
+    height:auto;
+    padding: 2% 5% 2% 5%;
+}
+#fish2{
+    background-color: var(--bondibluelight);
+    color:white;
+    height:auto;
+    padding: 2% 5% 2% 5%;
+}
+.list-group row{
+    list-style-type: none;
+    text-align: left;
+    margin-right: 0px;
+    float:left;
+    padding-top: 5%;
+}
+
+    #titletextmini{
+        text-align: center;
+        font-family: Oswald;
+        color:var(--bondibluedark);
+    }
+
+    #navigationbar{
+        background-color:white;
+        font-family: Oswald;
+        font-size: 30px;
+        background:white;
+        display: inline-block;
+        margin-bottom: 0px;
+        text-align: center;
+    }
+    #navcontainer{
+        text-align: center;
+        object-position: center;
+        float-offset: 20%;
+    }
+
+    .jumbotron{
+        padding-top: 0px;
+        padding-bottom: 0px;
+        background-color: white;
+        width:100%;
+        margin-bottom:0;
+        margin-right:0;
+        font-family: Oswald;
+        padding-bottom: 0px;
+        padding-top: 0px;
+        color:var(--bondibluedark);
+    }
+    #maintitle{
+        width:100%;
+        color:var(--bondibluedark);
+        padding-right: 5%;
+        font-size:8em;
+
+    }
+    .navbar{
+        margin-bottom:0px;
+
+    }
+    .navbar-default{
+        box-shadow: none;
+        margin-bottom: 0px;
+    }
+    .navbar.navbar-default {
+        background-color: #ffffff;
+        border-color: #ffffff;
+        box-shadow: none;
+        margin-bottom: 0px;
+    }
+    .navbar.navbar-default .navbar-brand {
+        color: var(--bondibluelight);
+
+    }
+    .navbar.navbar-default .navbar-brand:hover,
+    .navbar.navbar-default .navbar-brand:focus {
+        color: var(--bondibluelight);
+        background-color: black;
+
+    }
+    .navbar.navbar-default .navbar-text {
+        color: var(--bondibluelight);
+
+    }
+    .navbar.navbar-default .navbar-nav > li > a {
+        color: var(--bondibluelight);
+    }
+    .navbar.navbar-default .navbar-nav > li > a:hover,
+    .navbar.navbar-default .navbar-nav > li > a:focus {
+        color: white;
+        background-color: var(--bondibluelight);
+    }
+    #topnav .navbar.navbar-default .navbar-nav > .active > a,
+    #topnav .navbar.navbar-default .navbar-nav > .active > a:hover,
+    #topnav .navbar.navbar-default .navbar-nav > .active > a:focus {
+        color: white;
+    }
+    .navbar.navbar-default .navbar-nav > .open > a,
+    .navbar.navbar-default .navbar-nav > .open > a:hover,
+    .navbar.navbar-default .navbar-nav > .open > a:focus {
+        color: white;
+        background-color: var(--bondibluelight);
+    }
+    .navbar.navbar-default .navbar-toggle {
+        border-color: white;
+    }
+    .navbar.navbar-default .navbar-toggle:hover,
+    .navbar.navbar-default .navbar-toggle:focus {
+        background-color: #1d334c;
+    }
+    .navbar.navbar-default .navbar-toggle .icon-bar {
+        background-color: #1d334c;
+    }
+    .navbar.navbar-default .navbar-collapse,
+    .navbar.navbar-default .navbar-form {
+        border:none;
+    }
+    .navbar.navbar-default .navbar-link {
+        color: white;
+    }
+    .navbar.navbar-default .navbar-link:hover {
+        color: white;
+    }
+    #topnav .navbar-default .navbar-nav > .active{
+        background-color: blue;
+        color:white;
+        font-size: 40px;
+    }
+
+    .navbar-brand {
+        transform: translateX(-50%);
+        left: 50%;
+        position: absolute;
+    }
+
+    .nav.navbar-nav > li.navbar-left {
+        font-family: 'Nunito Sans', sans-serif;
+        text-align: center;
+        float:right;
+    }
+
+    .navbar-brand {
+        padding: 0px;
+    }
+    .navbar-brand>img {
+        height: 90%;
+        width: auto;
+    }
+
+    .banner {
+        width: 100%;
+        /*background-color: #c3d7df;*/
+    }
+
+    .banner-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+
+    }
+    @media (min-width:768px) and (max-width:991px){
+        .container.navbar-container {
+            width:100%;
+            padding:0;
+        }
+    }
+    li.dropdown {
+        display: inline-block;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow:black;
+        background-color: var(--bondibluemed);
+        z-index: 1;
+    }
+
+    .dropdown-content a {
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+    }
+    .dropdown-menu{
+
+    }
+    .dropdown-open .dropdown-menu .
+    .dropdown-content a:hover {
+        background-color: black;
+        text-decoration: none;
+        color: #007AE7;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+        font-size: 20px;
+        color: #80B8EA;
+        background-color: black;
+    }
+    .modal-lg {
+        width: 90%;
+    }
+
+.navbar.affix{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 9999 !important;
+    background: #ffff;
+    transition: all .35s ease;
+    text-align: center;
+    float:right;
+}
+.navbar.affix-top {
+    position: static;
+}
+
+.affix {
+    top: 0;
+    width: 100%;
+    background-color: white;
+    text-align: center;
+    left:0;
+    right: 0;
+}
+
+.affix +.container-fluid {
+    padding-top: 70px;
+    background-color: white;
+    text-align: center;
+    display: inline;
+}
+#nav.affix {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index:10;
+    text-align: center;
+}
+.button{
+    background-color: #09C3FD;
+
+}
+.parent{
+
+
+}
+#child{
+    width:inherit;
+
+}

@@ -38,16 +38,16 @@
 
             $count = count(scandir('Stories/')) - 4;
             $check=1;
-            for($i = 0; $count > $i; $count--){
-            $file = "Stories/".$i.".txt";
+            for($i = -1; $count > $i; $count--){
+            $file = "Stories/".$count.".txt";
             if(file_exists($file)) {
                 if(is_readable($file)) {
                     $f = fopen($file, "rb") or die("Unable to open file");
                 }
             }
 
-            $dos = "<div class =\"col-md-6\"style=\"background-color: #FF8691; height:auto; border-color: white; float:right; padding-right: 5%;\"><h2 style=\"font-size: 40px;\">Do</h2><ul type=\"circle\" style=\"font-size: 20px;\">";
-            $storyDiv = "<div class=\"row\"style=\"color:white; margin-left:0; background-color:";
+            $dos = "<div class =\"col-md-6\"style=\" height:auto; border-color: white; float:right; padding-right: 5%;\"><h2 style=\"font-size: 40px;\">Do</h2><ul type=\"circle\" style=\"font-size: 20px;\">";
+            $storyDiv = "<div class=\"row\"style=\" margin-left:0; border-top: 2px solid white; background-color:";
             $donts = "<h2 style=\"font-size: 40px;\">Don't</h2><ul type=\"circle\" style=\"font-size: 20px;\">";
 
             while ($line = fgets($f)) {
@@ -71,20 +71,19 @@
                     $storyDiv = $storyDiv.$color."; color:";
                 }elseif(strpos ($line, 'FONTCOLOR:' )!==false){
                     $color = get_string_between($line, 'FONTCOLOR:', ':FONTCOLOR');
-                    $storyDiv = $storyDiv.$color."color:white; padding-left: 5%; height:100%;\">
-            <h1 style=\" font-size: 70px; font-family: Oswald; text-align:center; object-position: center;\">";
+                    $storyDiv = $storyDiv.$color."; padding-left: 5%; height:100%;\"><h1 style=\" font-size: 70px; font-family: Oswald; text-align:center; object-position: center;\">";
                 }elseif(strpos ($line, 'STORY')!==false) {
                     if($count%2==0){
                         if(strpos($line, 'STORY1:')!==false){
-                            $templine= "<div id=\"theCarousel\" class=\"carousel slide\" data-ride=\"carousel\" style=\"border-right: 2px solid white; \"><ol class=\"carousel-indicators\">
-                            <li data-target=\"#theCarousel\" data-slide-to=\"0\" class=\"active\"></li>
-                            <li data-target=\"#theCarousel\" data-slide-to=\"1\"></li>
-                            <li data-target=\"#theCarousel\" data-slide-to=\"2\"></li>
+                            $templine= "<div id=\"theCarousel".$count."\" class=\"carousel slide\" data-ride=\"carousel\" style=\"border-right: 2px solid white; \"><ol class=\"carousel-indicators\">
+                            <li data-target=\"#theCarousel".$count."\" data-slide-to=\"0\" class=\"active\"></li>
+                            <li data-target=\"#theCarousel".$count."\" data-slide-to=\"1\"></li>
+                            <li data-target=\"#theCarousel".$count."\" data-slide-to=\"2\"></li>
                         </ol>
                         <div class=\"carousel-inner\" style=\"width:100%; height:100%;\">
                             <div class=\"item active\">                            
                                     <img src=\"img/Billy%20Happy.png\" alt=\"Billy Happy\" style=\"width:50%; transform: scaleX(-1); float:left\">
-                                        <h2 style=\"color:white; float:right; width:50%; font-family: Open+Sans;\">";
+                                        <h2 style=\" float:right; width:50%; font-family: Open+Sans;\">";
                             $templine = $templine.get_string_between($line, 'STORY1:', ':STORY1');
                             $templine = $templine."</h2></div><div class=\"item\"><img src=\"img/Billy%20Neutral.png\" alt=\"MediumBilly\" style=\"width:50%; transform: scaleX(-1); float:left;\"><h2 style=\"color:white; float:right; width:50%; \">";
                             $storyDiv = $storyDiv.$templine;
@@ -100,10 +99,10 @@
                         }
                     }else{
                         if(strpos($line, 'STORY1:')!==false){
-                            $templine= "<div id=\"theCarousel\" class=\"carousel slide\" data-ride=\"carousel\" style=\"border-right: 2px solid white; \"><ol class=\"carousel-indicators\">
-                            <li data-target=\"#theCarousel\" data-slide-to=\"0\" class=\"active\"></li>
-                            <li data-target=\"#theCarousel\" data-slide-to=\"1\"></li>
-                            <li data-target=\"#theCarousel\" data-slide-to=\"2\"></li>
+                            $templine= "<div id=\"theCarousel".$count."\" class=\"carousel slide\" data-ride=\"carousel\" style=\"border-right: 2px solid white; \"><ol class=\"carousel-indicators\">
+                            <li data-target=\"#theCarousel".$count."\" data-slide-to='0' class=\"active\"></li>
+                            <li data-target=\"#theCarousel".$count."\" data-slide-to='1'></li>
+                            <li data-target=\"#theCarousel".$count."\" data-slide-to='2'></li>
                         </ol>
                         <div class=\"carousel-inner\" style=\"width:100%; height:100%;\">
                             <div class=\"item active\">                            
@@ -152,13 +151,13 @@
     ?>
     <body>
         <?php include 'includes/header.html'?>
-        <div class="row" style="background-color:#80B8EA; color:white;">
-            <div class="col" ><h1 style="font-size: 70px;"><img src="img/Billy%20Happy%20small.png">The Story so far...<img src="img/Billy%20Happy%20small.png" style="transform: scaleX(-1);"></h1></div>
+        <div class="row" id="titlecont">
+            <div class="col" "><h1><img src="img/Billy%20Happy%20small.png">The Story so far...<img src="img/Billy%20Happy%20small.png" style="transform: scaleX(-1);"></h1></div>
         </div>
         <div class="row" style="background-color: #FF8691; color:white; padding-left: 5%; height:100%;">
-            <h1 style=" font-size: 70px; font-family: Oswald; object-position: center;">Billy Is Left Exposed<span class="badge" style="font-size: 40px; margin-left: 2%; padding: 0.5%;">New</span></></h1>
+            <center><h2 style=" font-size: 70px; font-family: Oswald; object-position: center;">Billy Is Left Exposed<span class="badge" style="font-size: 40px; margin-left: 2%; padding: 0.5%;">New</span></></h2></center>
             <div class="col-md-6" style="background-color: #FF8691; height:auto; float:left; ">
-                
+
                 <div id="theCarousel" class="carousel slide" data-ride="carousel" style="border-right: 2px solid white; ">
                     <!--Indicators -->
                     <ol class="carousel-indicators">
@@ -168,29 +167,29 @@
                     </ol>
                     <!--Wrapper for slides-->
                     <div class="carousel-inner" style="width:100%; height:100%;">
-                        <div class="item active">                            
+                        <div class="item active">
                                 <img src="img/Billy%20Happy.png" alt="Billy Happy" style="width:50%; float:left">
-                                    <h2 style="color:white; float:right; width:50%; font-family: Open+Sans; ">Billie has a computer, this computer keeps trying to update, Billie always clicks "remind me later"...</h2>
+                                    <h4 style="color:white; float:right; width:50%; font-family: Open+Sans; ">Billie has a computer, this computer keeps trying to update, Billie always clicks "remind me later"...</h4>
                         </div>
                         <div class="item">
                             <img src="img/Billy%20Neutral.png" alt="MediumBilly" style="width:50%; float:left;">
-                            <h2 style="color:white; float:right; width:50%; ">Billie has a computer, this computer keeps trying to update, Billie always clicks "remind me later"...</h2>
+                            <h4 style="color:white; float:right; width:50%; ">Billie has a computer, this computer keeps trying to update, Billie always clicks "remind me later"...</h4>
                         </div>
                         <div class="item">
                             <img src="img/Billy%20Unhappy.png" alt="SadBilly" style="width:50%; float:left;">
-                            <h2 style="color:white; float:right; width:47%; ">Billie has a computer, this computer keeps trying to update, Billie always clicks "remind me later"...</h2>
+                            <h4 style="color:white; float:right; width:47%; ">Billie has a computer, this computer keeps trying to update, Billie always clicks "remind me later"...</h4>
                         </div>
                     </div>
                 </div>
             </div>
                 <div class ="col-md-6"style="background-color: #FF8691; height:auto; border-color: white; float:right; padding-right: 5%;">
-                <h2 style="font-size: 40px;">Do</h2>
+                <h3 style="font-size: 40px;">Do</h3>
                 <ul type="circle" style="font-size: 20px;">
                     <li>Enable Automatic Updates</li>
                     <p>Operating systems and applications often have automatic update functionality. It's a good idea to enable it so you're always up to date.</p>
                     <li><a style="text-decoration: none;" href="backup.php">Learn More...</a></li>
                 </ul>
-                <h2 style="font-size: 40px;">Don't</h2>
+                <h3 style="font-size: 40px;">Don't</h3>
                 <ul type="circle" style="font-size: 20px;">
                     <li>Put it off!</li>
                     <p>'Patches' often quite literally patch security holes in software, the longer you leave your system unpatched the more vulnerable it becomes.</p>
@@ -200,23 +199,23 @@
                 </ul>
                 <img src="img/Artemis%20Point%20Left.png" style="float:right; padding-right: 2%; width:40%;">
                 </div>
-                    
+
             </div>
             <div class="row" style="background-color: #ffff66; color:black; padding-left: auto; padding-right: auto; height:100%; border:2px; border-color:white;">
                 <center>
                 <h1 style=" font-size: 70px; font-family: Oswald; ">Billy And The Wealthy Prince</h1></center>
                 <div class="col-md-6 col-md-pull-6" style="background-color: #ffff66; height:auto; float:right;">
-                
-                    <div id="theCarousel1" class="carousel slide" data-ride="carousel" style="padding-left: 2%; ">
+
+                    <div id="theCarousela" class="carousel slide" data-ride="carousel" style="padding-left: 2%; ">
                         <!--Indicators -->
                         <ol class="carousel-indicators" style="color:aqua;">
-                            <li data-target="#theCarousel1" data-slide-to="0" class="active"></li>
-                            <li data-target="#theCarousel1" data-slide-to="1"></li>
-                            <li data-target="#theCarousel1" data-slide-to="2"></li>
+                            <li data-target="#theCarousela" data-slide-to="0" class="active"></li>
+                            <li data-target="#theCarousela" data-slide-to="1"></li>
+                            <li data-target="#theCarousela" data-slide-to="2"></li>
                         </ol>
                         <!--Wrapper for slides-->
                         <div class="carousel-inner" style="width:100%; height:100%;">
-                            <div class="item active">                            
+                            <div class="item active">
                                 <img src="img/Billy%20Happy.png" alt="Billy Happy" style="width:50%; float:right; transform: scaleX(-1);">
                                     <h2 style="float:left; width:50%; font-family: Open+Sans; ">Billy received a lovely email from a prince wanting to send him some money and asking for Billy's bank details..</h2>
                             </div>

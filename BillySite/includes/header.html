@@ -1,214 +1,179 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!DOCTYPE html>
 <html>
     <?php include 'head.html';?>
     <body>
-        <script>
-            var url = window.location;
-            
-            // Will only work if string in href matches with location
-            $('ul.nav a[href="'+ url +'"]').parent().addClass('active');
+    <script>
 
-            // Will also work for relative and absolute hrefs
-            $('ul.nav a').filter(function() {
-                return this.href == url;
-            }).parent().addClass('active');
-            /* When the user clicks on the button, 
-            toggle between hiding and showing the dropdown content */
-            function dropdownFunction() {
-                document.getElementById("dropDownMenu").classList.toggle("show");
+        var counter = 1;
+        var lives = 3;
+
+        function gamefunction(id){
+
+            var newImg = new String();
+            var rightAnswer = new Boolean();
+            var humanAnswer = new Boolean();
+
+            if(id == "button-true"){
+                humanAnswer=true;
+            }else{
+                humanAnswer=false;
             }
 
-            // Close the dropdown if the user clicks outside of it
-            window.onclick = function(e) {
-              if (!e.target.matches('.dropbtn')) {
-                var myDropdown = document.getElementById("myDropdown");
-                  if (myDropdown.classList.contains('show')) {
-                    myDropdown.classList.remove('show');
-                  }
-              }
-            }
-        </script>
-        <style>
-        @media screen and (min-width: 768px)
-        .jumbotron {
-            padding-top: 0px;
-            padding-bottom: 0px;
-        }
-        .navbar{
-            margin-bottom:0px;
-
-        }
-        .navbar-default{
-            box-shadow: none;
-            margin-bottom: 0px;
-        }
-        .navbar.navbar-default {
-          background-color: #ffffff;
-          border-color: #ffffff;
-          box-shadow: none;
-            margin-bottom: 0px;
-        }
-        .navbar.navbar-default .navbar-brand {
-          color: #80B8EA;
-          
-        }
-        .navbar.navbar-default .navbar-brand:hover,
-        .navbar.navbar-default .navbar-brand:focus {
-          color: #80B8EA;
-          
-        }
-        .navbar.navbar-default .navbar-text {
-          color: #80B8EA;
-            
-        }
-        .navbar.navbar-default .navbar-nav > li > a {
-          color: #80B8EA;
-        }
-        .navbar.navbar-default .navbar-nav > li > a:hover,
-        .navbar.navbar-default .navbar-nav > li > a:focus {
-          color: #007AE7;
-        }
-        .navbar.navbar-default .navbar-nav > .active > a,
-        .navbar.navbar-default .navbar-nav > .active > a:hover,
-        .navbar.navbar-default .navbar-nav > .active > a:focus {
-          color: #80B8EA;
-        }
-        .navbar.navbar-default .navbar-nav > .open > a,
-        .navbar.navbar-default .navbar-nav > .open > a:hover,
-        .navbar.navbar-default .navbar-nav > .open > a:focus {
-          color: #80B8EA;
-          background-color: #80B8EA;
-        }
-        .navbar.navbar-default .navbar-toggle {
-          border-color: #80B8EA;
-        }
-        .navbar.navbar-default .navbar-toggle:hover,
-        .navbar.navbar-default .navbar-toggle:focus {
-          background-color: #80B8EA;
-        }
-        .navbar.navbar-default .navbar-toggle .icon-bar {
-          background-color: #80B8EA;
-        }
-        .navbar.navbar-default .navbar-collapse,
-        .navbar.navbar-default .navbar-form {
-          border:none;
-        }
-        .navbar.navbar-default .navbar-link {
-          color: #80B8EA;
-        }
-        .navbar.navbar-default .navbar-link:hover {
-          color: #80B8EA;
-        }
-        .navbar-default .navbar-nav > .active{
-            color: transparent;
-           background: transparent;
-            font-size: 40px;
-         }
-         .navbar-default .navbar-nav > .active > a, 
-         .navbar-default .navbar-nav > .active > a:hover, 
-         .navbar-default .navbar-nav > .active > a:focus {
-              color: transparent;
-         }
-
-        .navbar-brand {
-          transform: translateX(-50%);
-          left: 50%;
-          position: absolute;
-        }
-
-        .nav.navbar-nav > li.navbar-left {
-          font-family: 'Nunito Sans', sans-serif;
-          font-size: 11px;
-        }
-
-        .navbar-brand {
-          padding: 0px;
-        }
-        .navbar-brand>img {
-          height: 90%;
-          width: auto;
-        }
-
-        .banner {
-            width: 100%;
-            /*background-color: #c3d7df;*/
-        }
-
-        .banner-inner {
-            max-width: 1100px;
-            margin: 0 auto;
-
-        }
-        @media (min-width:768px) and (max-width:991px){
-          .container.navbar-container {
-             width:100%;
-             padding:0;
-          }
-        }
-        li.dropdown {
-            display: inline-block;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #f9f9f9;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
-        }
-
-        .dropdown-content a {
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            text-align: left;
-        }
-
-        .dropdown-content a:hover {
-            background-color: #f1f1f1;
-            text-decoration: none;
-            color: #007AE7;
+            if(document.getElementById(counter).getAttribute("data-answer")==0){
+                rightAnswer =true;
+            }else{
+                rightAnswer=false;
             }
 
-        .dropdown:hover .dropdown-content {
-            display: block;
-            font-size: 20px;
-            color: #80B8EA;
+            if(humanAnswer == rightAnswer && counter <10 && lives>0){
+                livesfunc(lives);
+                newImg= counter.toString();
+                document.getElementById(newImg).style.display = 'none';
+                counter++;
+                newImg=counter.toString();
+                document.getElementById(newImg).style.display = 'inline';
+                document.getElementById("lives").innerHTML = lives;
+
+            }else if (humanAnswer != rightAnswer && counter <10 && lives>0){
+                livesfunc(lives);
+                newImg= counter.toString();
+                document.getElementById(newImg).style.display = 'none';
+                counter++;
+                newImg=counter.toString();
+                document.getElementById(newImg).style.display = 'inline';
+                document.getElementById("lives").innerHTML = lives;
+                lives--;
+            }else if(lives == 0 && counter <= 10){
+                livesfunc(lives);
+                newImg= counter.toString();
+                document.getElementById(newImg).style.display = 'none';
+                document.getElementById("40").style.display = 'inline';
+                document.getElementById("lives").innerHTML = lives;
+                document.getElementById("button-true").style.display = 'none';
+                document.getElementById("button-false").style.display = 'none';
+                document.getElementById("play-again").style.display = 'inline';
+            }else if (lives == 3 && counter >= 10){
+                livesfunc(lives);
+                newImg= counter.toString();
+                document.getElementById(newImg).style.display = 'none';
+                document.getElementById("20").style.display = 'inline';
+                document.getElementById("lives").innerHTML = lives;
+                document.getElementById("button-true").style.display = 'none';
+                document.getElementById("button-false").style.display = 'none';
+                document.getElementById("play-again").style.display = 'inline';
+            }else{
+                livesfunc(lives);
+                newImg= counter.toString();
+                document.getElementById(newImg).style.display = 'none';
+                document.getElementById("30").style.display = 'inline';
+                document.getElementById("lives").innerHTML = lives;
+                document.getElementById("button-true").style.display = 'none';
+                document.getElementById("button-false").style.display = 'none';
+                document.getElementById("play-again").style.display = 'inline';
+            }
+
+
         }
-        </style>
+        function livesfunc(lives){
+            document.getElementById("lives0").style.display = 'none';
+            document.getElementById("lives1").style.display = 'none';
+            document.getElementById("lives2").style.display = 'none';
+            for (i = 0; i < lives; i++) {
+                document.getElementById("lives"+i).style.display = 'inline';
+            }
+        }
+    </script>
+
         <header>
             <title>The Adventures of Billy</title>
-            <div class="jumbotron text-center" style="background-color: white; width:100%; margin-bottom:0; margin-right:0; font-family: Oswald; padding-bottom: 0px; padding-top: 0px;">
-                <div class="container" style="width: 100%;">
-                    <center><a href ="index.php" style="text-decoration: none;"><b><h1 style="width:100%font-weight:bold; color:#80B8EA; padding-right: 5%; font-size: 100px;" ><img src="img/Billy%20Happy%20small.png" alt="logo" style="padding-left: 5%; ">The Adventures of Billy<img src="img/lighthousesmall.png" alt="logo"></h1></b></a></center>
-                    <br>
-                    <br><p style="color:#80B8EA; width:100%; float:left; font-size: 20px;">Information security made simple...</p>
-                </div>
-                
-                <nav class="navbar navbar-default" style="background-color:white; color:#FF869; font-size: 30px; background:transparent; display: inline-block; margin-bottom: 0px;">
-                        <div class="container-fluid" style="background-color: transparent; color: #FF8691;">
+                    <nav class="navbar  navbar-default navbar-fixed-top" role="navigation" id=navigationbar>
+                        <div class="container-fluid">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbarCollapse">
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                            </div>
+                            <div class="collapse navbar-collapse navbarCollapse">
                             <ul class="nav navbar-nav">
-                                <li><a href="index.php">Home</a></li>
-                                <li><a href="stories.php">The Story So Far</a></li>
-                                <li><a href="phishing.php">Phishing</a></li>
-                                <li><a href="rogue.php">Rogue Networks</a></li>
+                                <li class="active"><a href="index.php">Home</a></li>
+                                <li ><a href="stories.php">The Story So Far</a></li>
+                                <li ><a href="phishing.php">Phishing</a></li>
+                                <li ><a href="rogue.php">Rogue Networks</a></li>
                                 <li><a href="malware.php">Malware</a></li>
                                 <li><a href="news.php">News</a></li>
                                 <li class="dropdown">
-                                    <a href="javascript:void(0)" class="dropbtn" onclick="dropdownFunction" id="dropDownMenu">Games</a>
-                                    <div class="dropdown-content">
-                                      <a href="phishinggame.php">Phishing</a>
-                                    </div>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Games<span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a data-toggle="modal" data-target="#phishingModel">Phishing</a></li>
+                                    </ul>
                                 </li>
                             </ul>
+                            </div>
                         </div>
-                </nav>
-                
+                    </nav>
+            <div class="jumbotron text-center">
+                    <a href ="index.php" style="text-decoration: none;"><b><h1 id="maintitle"><img src="img/Billy%20Happy%20small.png" alt="logo" style="padding-left: 5%; ">THE ADVENTURES OF BILLY<img src="img/lighthousesmall.png" alt="logo"></h1></b></a>
+
             </div>
-            
-        </header> 
+            <div id="titletextmini"><p>Information security made simple...</p></div>
+        </header>
+        <div class="container">
+            <div class="modal fade" id="phishingModel" role="dialog">
+                <div class="modal-dialog modal-lg">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header" style="background-color:#80B5E4;">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h1 style=" font-size: 4em;color:white;"><img src="img/Artemis%20Point%20Left.png" style="transform: scaleX(-1); width:8%;">Phishing Game</h1>
+                            <p style="color:white; font-size: 1.5em;">Using your knowledge of Phishing emails help Billy spot the difference between the genuine emails and the malicious emails</p>
+                        </div>
+                        <div class="modal-body" style="overflow:hidden; padding-top: 0px; padding-bottom: 0px;">
+                               <div class="row" style="oveflow:hidden;">
+                                    <div class="row"  id ="screen" style="background-color: #4682B4; overflow:hidden; color: black; font-size: 20px; opacity:1;">
+
+                                        <div class ="col-lg-8" style="padding:0; margin:0;">
+                                            <center>
+                                            <img class="custom-image" src="Fake Emails/Account Termination.png"  data-answer="1" style="display:inline; overflow:hidden;width:777px;" id="1">
+                                            <img class="custom-image" src="Real Emails/Paypal Legal.png" data-answer="0" style="display: none;  overflow:hidden; width:777px; "id="2">
+                                            <img class="custom-image" src="Real Emails/google review blocked.png" data-answer="0" style="display:none;  overflow:hidden; width:777px;" id="3">
+                                            <img class="custom-image" src="Fake Emails/ICT%20Service Desk.png" data-answer="1" style="display: none;  overflow:hidden; width:777px;" id="4">
+                                            <img class="custom-image" src="Real Emails/Ebay.png" data-answer="0" style="display:none; overflow:hidden; width:777px;" id="5">
+                                            <img class="custom-image" src="Fake Emails/May Moehle's a liar.png" data-answer="1" style="display: none;  overflow:hidden; width:777px;" id="6">
+                                            <img class="custom-image" src="Real Emails/Prime Video.png" data-answer="0" style="display: none;  overflow:hidden; width:777px;;" id="7">
+                                            <img class="custom-image" src="Fake Emails/Confidential Doc.png" data-answer="1" style="display: none;width:777px;" id="8">
+                                            <img class="custom-image" src="Real Emails/Daz 3D.png" data-answer="0" style="display: none;  overflow:hidden; width:777px;" id="9">
+                                            <img class="custom-image" src="Fake Emails/Netflix.png" data-answer="1" style="display: none;  overflow:hidden; width:777px;" id="10">
+                                            <div style="display:none; color:white;" id="20"><img src="img/Billy%20Happy.png"><h1>You are a phishing pro!</h1></div>
+                                            <div style="display:none; color:white;" id="30"><img src="img/Billy%20Neutral.png"><h1>You are good, but not great, keep practicing!</h1></div>
+                                            <div style="display:none; color:white;" id="40"><img src="img/Billy%20Dead.png"><h1>GAME OVER, you got billy hacked</h1></div>
+                                            </center>
+                                        </div>
+
+                                        <div class="col-lg-4" style="color:white;" id="livesG"><h1>Lives:</h1><h1 id="lives">3</h1>
+                                            <div class="row">
+                                                <img id="lives0" style="width:20%;" src="img/Billy Happy small.png"/>
+                                                <img id="lives1" style="width:20%;" src="img/Billy Happy small.png"/>
+                                                <img id="lives2" style="width:20%;" src="img/Billy Happy small.png"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class ="row" style ="background-color: #80B8EA; color: black; font-size: 3em; padding-top: 2%;padding-bottom: 2%; text-align: center;">
+                                        <button  type="button" class="btn btn-success btn-lg" id="button-true" onclick="gamefunction(this.id)" > Genuine </button>
+                                        <button type="button" class="btn btn-danger btn-lg" id="button-false" onclick="gamefunction(this.id)" style=" padding-right:1%; padding-left: 1%;">Phishing</button>
+                                        <button id="play-again" onclick="window.location.reload()" style="display: none;">Play Again?</button>
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        </center>
     </body>
 </html>

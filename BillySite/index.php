@@ -31,17 +31,17 @@
             background-color: white;
         }
         </style>
-        <body style="background-color: white text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; ">
+        <body>
         <?php include 'includes/header.html'?>
-            <div class="row" style="background-color: #80B8EA;  color:white; padding-left: 5%; height:100%;">
+            <div id="titlecont"class="row" >
                 <div class="container">
-                    <h1 style ="font-size: 70px;"><img src="img/Billy%20Happy%20small.png">Who is Billy?<img src="img/Billy%20Happy%20small.png" style="transform: scaleX(-1);"></h1>
-                    <p style="font-size: 30px;">Billy is here to make mistakes with his cyber security so you don't have to... </p></>
+                    <h1><img src="img/Billy%20Happy%20small.png">Who is Billy?<img src="img/Billy%20Happy%20small.png" style="transform: scaleX(-1);"></h1>
+                    <p>Billy is here to make mistakes with his cyber security so you don't have to... </p></>
                 </div>
             </div>
-        <div class="row" style="background-color: #FF8691; color:white; padding-left: 5%; height:100%;">
-        <h1 style=" font-size: 70px; font-family: Oswald; object-position: center;">Billy Is Left Exposed<span class="badge" style="font-size: 40px; margin-left: 2%; padding: 0.5%;">New</span></h1>
-        <div class="col-md-6" style="background-color: #FF8691; height:auto; float:left; ">
+        <div class="row" style="background-color: var(--brilliantroselight); color:white; padding-left: 5%; height:100%;">
+        <center><h1 style=" font-size: 70px; font-family: Oswald; object-position: center;">Billy Is Left Exposed<span class="badge" style="font-size: 40px; margin-left: 2%; padding: 0.5%;">New</span></h1></center>
+        <div class="col-md-6" style="background-color: var(--brilliantroselight); height:auto; float:left; ">
 
             <div id="theCarousel" class="carousel slide" data-ride="carousel" style="border-right: 2px solid white; ">
                 <!--Indicators -->
@@ -66,9 +66,8 @@
                     </div>
                 </div>
             </div>
-
         </div>
-        <div class ="col-md-6"style="background-color: #FF8691; height:auto; border-color: white; float:right; padding-right: 5%;">
+        <div class ="col-md-6"style="background-color: var(--brilliantroselight); height:auto; border-color: white; float:right; padding-right: 5%;">
             <h2 style="font-size: 40px;">Do</h2>
             <ul type="circle" style="font-size: 20px;">
                 <li>Enable Automatic Updates</li>

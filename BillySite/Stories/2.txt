@@ -1,5 +1,5 @@
 BACKGROUNDCOLOR:#FF8691:BACKGROUNDCOLOR
-FONTCOLOR:white:FONTCOLOR
+FONTCOLOR:#ffff66:FONTCOLOR
 
 TITLE:Billy Is Left Exposed:TITLE
 STORY1:Billie has a computer, this computer keeps trying to update, Billie always clicks 'remind me later'... :STORY1

@@ -110,12 +110,11 @@
         }
     }
     ?>
-        <body style="background-color: white text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; ">
+        <body>
         <?php include 'includes/header.html'?>
-            <div class="row" style="background-color: #80B8EA; width:100%; color:white; padding-left: 5%; height:100%; margin-left: 0;">
+            <div class="row" id="titlecont">
             <div class="container">
-                <center><h1 style ="font-size: 70px;"><img src="img/Billy%20Happy%20small.png">News<img src="img/Billy%20Happy%20small.png" style="transform: scaleX(-1);"></h1> 
-                </center>
+                <h1><img src="img/Billy%20Happy%20small.png">News<img src="img/Billy%20Happy%20small.png" style="transform: scaleX(-1);"></h1>
             </div>
             </div>
                 <?php echo newsFunc();?>

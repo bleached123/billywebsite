@@ -3,53 +3,34 @@
 <html>
         <!-- Favicon -->
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-         <style>
-            @import url('https://fonts.googleapis.com/css?family=Open+Sans');
-            @import url('https://fonts.googleapis.com/css?family=Oswald');
-        </style>
-        <style>
-            .button{
-                background-color: #09C3FD;
-                
-            }
-            .parent{
-                
-                
-            }
-            #child{
-                width:inherit;
-                
-            }
-        </style>
     <body>
     <?php include 'includes/header.html'?>
-        <center>
-            <div class="row" style="background-color: #80B8EA;">
-                <h1 style=" font-size: 70px; color:white;"><img src="img/Billy%20Happy%20small.png">Phishing<img src="img/Billy%20Happy%20small.png" style="transform:scaleX(-1)"></h1>
+            <div class="row" id="containerfish">
+                <h1><img src="img/Billy%20Happy%20small.png">Phishing<img src="img/Billy%20Happy%20small.png" style="transform:scaleX(-1)"></h1>
             </div>
-        </center>
-        <div class="row" style="background-color: #4682B4; color: white; border-bottom-style: solid white; font-size: 20px; padding-left: 5%; padding-right: 5%; padding-bottom: 5%;">
-        <div class="col" style="float:left; background-color: #4682B4; width:50%;">
-            <h1 style="font-size: 60px; height: inherit">What is phishing?</h1>
-            <img src="img/phillythefish.png" style="width:400px; height:auto;"/>
-        </div>
-        <div class="col" id="introText" style="float:right; background-color: #4682B4; width:50%; padding-top: 2%;"><p style ="font-size: 30px;">Cybercriminals send emails pretending to be someone they are not to many people at the same time. The email can claim to come from a bank, company, government department or any other widely used online service. The aim is to get the target to do something they usually wouldn't or reveal personal information.
-            <br><br>
-        Emails often request login details for websites with financial information such as internet banking sites. This may be in the form of a security alert asking you to confirm your account details for example.
-        </p></div>
+        <div class="row" id="fish1">
+            <div class="col-md-6">
+                <h2>What is phishing?</h2>
+                <img id="contimage" src="img/phillythefish.png" />
+            </div>
+            <div class="col-md-6"><p>Cybercriminals send emails pretending to be someone they are not to many people at the same time. The email can claim to come from a bank, company, government department or any other widely used online service. The aim is to get the target to do something they usually wouldn't or reveal personal information.
+                <br><br>
+            Emails often request login details for websites with financial information such as internet banking sites. This may be in the form of a security alert asking you to confirm your account details for example.
+            </p>
+            </div>
         
         </div>
-        <div class="row"  style ="background-color: #80B8EA; color: white; border-bottom-style: solid white; font-size: 20px; padding-left: 5%; padding-right: 5%; padding-bottom: 5%;">
+        <div class="row" id="fish2">
             
             <div class="col-md-6 col-md-push-6">
-                <h1 style="font-size: 50px; float:right; padding-right: 5%;">Anatomy of a Phishing Email</h1>
-                <div style="float:right; padding-right: 5%;">
+                <h3>Anatomy of a Phishing Email</h3>
+                <div >
                     <img src="img/Anatomy%20of%20a%20phishing%20email.png" style="width:100%;">
                 </div>
             </div>
             <div class="col-md-6 col-md-pull-6" id="accordion" role="tablist aria-multselectable=true">
 
-            <ul class="list-group row" style="list-style-type: none; text-align: left; margin-right: 0px; float:left; padding-top: 5%; ">
+            <ul class="list-group row">
                     <li>
                         <button type="button" role="tab" class="btn btn-info" data-parent="#accordion" data-toggle="collapse" id="btn1" data-target="#button1" style="font-size: 20px;" aria-expanded="true" aria-controls="button1">1. Emails sent from public email addresses</button>
                           <div id="button1" role="tabpanel" class="collapse" aria-labelledby="btn1" style="background-color:#4682B4; padding-right: 2%; padding-left: 2%;">
@@ -92,17 +73,12 @@
                             Contact support email addresses, and toll numbers are to allow you to correspond with the attacker or pay toll fees.
                         </div>
                     </li>
-
             </ul>
-                
             </div>
         </div>
-
-        <center>
-            <div class="row" style="background-color: #4682B4; color:white;">
-            
-                <h2><a style = "text-decoration: none; color:white;"href="http://blogs.plymouth.ac.uk/strategyandarchitecture/phishing-line/">Want to know even more?</a></h2></div>
-        </center>
+        <div class="row" id="fish1">
+            <h2 style = "text-align: center;"><a  href="http://blogs.plymouth.ac.uk/strategyandarchitecture/phishing-line/">Want to know even more?</a></h2>
+        </div>
         <?php include 'includes/footer.html'?>
     </body>
 </html>
